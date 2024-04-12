@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>QR Code Generator</title>
+        <style>
+            body {
+                margin: 0;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #dcdcdc;
+                font-family: Poppins;
+            }
+            .container {
+                width: 400px;
+                background-color: #eeebeb;
+                color: #191919;
+                padding: 20px;
+                box-sizing: border-box;
+                border-radius: 20px;
+                box-shadow: 20px 20px 50px #19191955;
+            }
+            .container h1 {
+                margin: 0;
+                font-size: x-large;
+                font-weight: 500;
+            }
+            .container .image img {
+                width: 90%;
+            }
+            .container .image {
+                background-color: white;
+                margin: 20px 0;
+                padding: 15%;
+                border-radius: 30px;
+                overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-sizing: border-box;
+            }
+            .form input {
+                width: 100%;
+                box-sizing: border-box;
+                border: none;
+                padding: 20px;
+                background: #dcd9d9;
+                border-radius: 10px;
+                font-family: Poppins;
+                outline: none;
+            }
+            .form button{
+                background-color: #2aca8e;
+                width: 100%;
+                color: snow;
+                border: none;
+                padding: 20px;
+                margin-top: 10px;
+                border-radius: 5px;
+                font-family: Poppins;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>QR Code Generator</h1>
+            <div class="image">
+                <img src="no-image-icon-23494.png" alt="Your-Image" id="image">
+            </div>
+            <div class="form">
+                <input type="text" id="content" placeholder="Content of Your QR Code">
+                <button id="btnCreate">Generate QR Code</button>
+            </div>
+        </div>
+        <script>
+            let image = document.getElementById("image");
+            let content = document.getElementById('content');
+            let btnCreate = document.getElementById('btnCreate');
+            btnCreate.onclick = () => {
+                if(content.value == "") return alert("Please enter some text!");
+                // Create the qr code
+                let linkQR = 'https://api.qrserver.com/v1/create-qr-code/';
+                image.src = linkQR + '?size=500x500&data=' + encodeURIComponent(content.value);
+            }
+        </script>
+        
+    </body>
+</html>
